@@ -1,12 +1,12 @@
 var now = moment();
-now = now.add(-7, "h");
+now = now.add(-7, "h"); // change time to test various hours of the day
 var nowHour = now.hour();
 var currentDayEl = $("#currentDay");
 
 // Set currentDay <p> text to the current date
 currentDayEl.text(now.format("dddd, MMMM Do YYYY"));
 
-//Set textarea backgrounds based on past, present or future
+// Set textarea backgrounds based on past, present or future
 for (i = 9; i < 18; i++) {
     var textareaEl  = $("#textarea-" + i);
     if (i < nowHour) {
@@ -18,3 +18,12 @@ for (i = 9; i < 18; i++) {
     else
         textareaEl.addClass("future");
 }
+
+// Add listener to save buttons to save entered text to localStorage
+$(".saveBtn").on("click", function(event) {
+    var imgEl = $(event.target);
+    var hour = imgEl.data("hour")
+    var textareaEl = $("#textarea-" + hour);
+    var localKey = "scheduler-" + hour;
+    localStorage.setItem(localKey, textareaEl.val());
+});
