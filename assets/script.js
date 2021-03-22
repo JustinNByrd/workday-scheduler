@@ -19,6 +19,16 @@ for (i = 9; i < 18; i++) {
         textareaEl.addClass("future");
 }
 
+// Get saved events from localStorage and populate textareas
+for (i = 9; i < 18; i++) {
+    var localKey = "scheduler-" + i;
+    var localValue = localStorage.getItem(localKey);
+    if (localValue != null) {
+        var textareaEl = $("#textarea-" + i);
+        textareaEl.text(localValue);
+    }
+}
+
 // Add listener to save buttons to save entered text to localStorage
 $(".saveBtn").on("click", function(event) {
     var imgEl = $(event.target);
