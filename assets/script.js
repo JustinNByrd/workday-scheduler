@@ -1,5 +1,5 @@
 var now = moment();
-now = now.add(-7, "h"); // change time to test various hours of the day
+// now = now.add(-7, "h"); // change time to test various hours of the day
 var nowHour = now.hour();
 var currentDayEl = $("#currentDay");
 
